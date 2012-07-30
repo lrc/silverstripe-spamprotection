@@ -10,9 +10,10 @@
 class SpamProtection_HoneypotField extends TextField {
 	
 	static $validate_members = false;
+	static $field_name = 'SPHP';
 	
-	function __construct($name = "Email"){
-		parent::__construct($name);
+	function __construct(){
+		parent::__construct(self::$field_name);
 		$this->title = _t('SpamProtectionHoneyPotField.TITLE', "Please do not fill out this field. It prevents spam.");
 	}
 	
