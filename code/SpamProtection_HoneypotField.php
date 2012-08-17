@@ -14,7 +14,7 @@ class SpamProtection_HoneypotField extends TextField {
 	
 	function __construct(){
 		parent::__construct(self::$field_name);
-		$this->title = _t('SpamProtectionHoneyPotField.TITLE', "Please do not fill out this field. It prevents spam.");
+		$this->title = _t('SpamProtectionHoneyPotField.TITLE', "Please do not fill out this field.");
 	}
 	
 	function Field(){
