@@ -12,12 +12,14 @@ class SpamProtection_TimeField extends HiddenField {
 	public static $time_limit = 3; // Time limit in seconds.
 	public static $field_name = 'SPT'; // Name to use for the form field.
 	
+	private $offset = 1350000000; // Use of an offset makes it a little less obvious this is a timestamp.
+	
 	/**
 	 * Construct the field.
 	 * @param type $name 
 	 */
 	public function __construct() {
-		parent::__construct(self::$field_name, '', time());
+		parent::__construct(self::$field_name, '', time()-$this->offset);
 	}
 	
 	/**
@@ -39,7 +41,7 @@ class SpamProtection_TimeField extends HiddenField {
 		}
 		
 		// Validate everyone else.
-		if ( ($this->value + self::$time_limit) > time() ) {
+		if ( ($this->value + self::$time_limit) > time()-$this->offset ) {
 			$validator->validationError(
  				$this->name,
 				_t('SpamProtectionTimeField.ERROR', "You were too quick. Take a breath and try again."),
