@@ -12,12 +12,12 @@ class SpamProtection_HoneypotField extends TextField {
 	static $validate_members = false;
 	static $field_name = 'SPHP';
 	
-	function __construct(){
-		parent::__construct(self::$field_name);
-		$this->title = _t('SpamProtectionHoneyPotField.TITLE', "Please do not fill out this field. It prevents spam.");
+	function __construct($name = null){
+		parent::__construct(($name) ? $name : self::$field_name);
+		$this->title = _t('SpamProtectionHoneyPotField.TITLE', "Please do not fill out this field.");
 	}
 	
-	function Field(){
+	function Field($properties = array()){
 		//display field after validation if it fails
 		if(!$this->messageType){
 			$htmlid = $this->name;		
@@ -31,7 +31,11 @@ class SpamProtection_HoneypotField extends TextField {
 CSS;
 			Requirements::customCSS($css,$this->name);
 		}
-		return parent::Field();
+		return parent::Field($properties);
+	}
+	
+	public function Type() {
+		return '';
 	}
 	
 	function validate($validator){
