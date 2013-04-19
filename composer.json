@@ -1,0 +1,19 @@
+{
+	"name": "lrc/spam-protection",
+	"description": "Spam protection form fields for SilverStripe",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "spam", "forms"],
+	"authors": [
+		{
+			"name": "Simon Elvery",
+			"email": "simon@leftrightandcentre.com.au"
+		},
+		{
+			"name": "Jeremy Shipman",
+			"url": "https://github.com/burnbright/"
+		}
+	],
+	"require": {
+		"silverstripe/framework": "~3.0.0"
+	}
+}
