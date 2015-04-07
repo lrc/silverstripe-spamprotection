@@ -28,7 +28,7 @@ class SpamProtection_TimeField extends HiddenField {
 	 * @param Validator $validator The form validator.
 	 * @return boolean TRUE if the field passes validation, FALSE otherwise.
 	 */
-	public function validate(Validator $validator){
+	public function validate($validator){
 		
 		// Never reject admins.
 		if(Permission::check('ADMIN')){
