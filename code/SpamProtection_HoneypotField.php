@@ -15,23 +15,24 @@ class SpamProtection_HoneypotField extends TextField {
 	function __construct($name = null){
 		parent::__construct(($name) ? $name : self::$field_name);
 		$this->title = _t('SpamProtectionHoneyPotField.TITLE', "Please do not fill out this field.");
+		$this->addExtraClass("hidden");
 	}
 	
-	function Field($properties = array()){
-		//display field after validation if it fails
-		if(!$this->messageType){
-			$htmlid = $this->name;		
-			$css =<<<CSS
-				form div#$htmlid{
-					margin:0;padding-left:1px;
-					height:1px;
-					width:0;
-					overflow:hidden;
-				}
-CSS;
-			Requirements::customCSS($css,$this->name);
+	/**
+	 * Set the field value.
+	 *
+	 * @param mixed $value
+	 * @param null|array|DataObject $data {@see Form::loadDataFrom}
+	 *
+	 * @return $this
+	 */
+	public function setValue($value) {		
+		if(!empty($value)) {
+			$this->removeExtraClass("hidden");
+		} else {
+			$this->addExtraClass("hidden");
 		}
-		return parent::Field($properties);
+		return parent::setValue($value);
 	}
 	
 	public function Type() {
